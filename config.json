@@ -1,1 +1,34 @@
+{
+  "db_host": "localhost",
+  "db_port": 5432,
+  "db_name": "concurrent_backtest_fg",
+  "db_user": "postgres",
+  "db_password": "admin",
+  "max_db_connections": 20,
 
+  "brain_username": "*****@qq.com",
+  "brain_password": "*****",
+
+  "alpha_count_per_slot": 10,
+  "concurrent_count": 8,
+  "use_multi_sim": true,
+  "backtest_fetch_limit": 1000,
+  "poll_interval_seconds": 60, 
+  "default_alpha_priority": "LOW",
+  "pause": false,
+  "task_queue_size": 50,
+  "log_level": "INFO",
+  "log_to_file": true,
+  "log_to_console": true,
+  "log_file_path": "concurrent_backtest.log",
+  "log_max_size": 10485760,
+  "log_backup_count": 5,
+
+  "import_directory": "expressions/ASI_1_MVMVIMV/pv",
+  "import_check_interval": 30.0,
+  "import_mode": "directory",
+  "import_file_path": "expressions/ASI_pv37_temp1_差分层叠.json",
+  "import_pattern": "*.json",
+  "import_skip_duplicates": true,
+  "import_batch_size": 200
+}
