@@ -1,0 +1,59 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Tools & IDE
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Tests & coverage
+.pytest_cache/
+.coverage*
+htmlcov/
+.tox/
+.mypy_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Logs & temp
+logs/
+*.log
+*.tmp
+*.bak
+
+# Data dumps
+*.csv
+*.parquet
+*.feather
+*.zip
+*.gz
+
+# Local configs (keep example in README)
+config.json
+*_config.json
+secrets*.json
+
+# Ignore large vendor archives
+*.whl
+*.tar
+*.tar.gz
+*.tar.bz2
+*.7z

@@ -1,0 +1,9 @@
+﻿# superalpha project meta
+user_id: 253553962@qq.com
+created_at: 2025-09-30T04:11:31
+logs:
+  - concurrent_multi_backtest.log
+  - wqb_concurrent.log
+notes:
+  - keep configs out of repo (see .gitignore)
+  - use README.md for run steps
