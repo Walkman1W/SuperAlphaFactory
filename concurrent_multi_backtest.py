@@ -272,10 +272,19 @@ class ConcurrentMultiBacktest:
                 safe_multi: List[Any] = [m for m in multi if isinstance(m, list) and len(m) >= 2]
                 if safe_multi:
                     # 统一、精简的开始日志，并声明进度频率
+                    # 统一、精简的开始日志，并声明进度频率
                     progress_gap = int(getattr(self.config, "progress_log_gap", 10))
                     logger.info("开始并发回测: 组数=%d, 线程=%d, 每%d组打印进度",
                                 len(safe_multi), self.concurrent_count, progress_gap)
                     
+                    # 并发提交本轮 MultiAlpha 回测，获取各组响应
+                    resps_multi = await self.wqb_session.concurrent_simulate(
+                        safe_multi,
+                        concurrency=self.concurrent_count,
+                        log='multi-sim',
+                        log_gap=progress_gap,
+                    )
+
                     ok_cnt = 0
                     flat: List[Any] = []
                     extracted_ids_log: List[str] = []
