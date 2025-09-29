@@ -271,12 +271,11 @@ class ConcurrentMultiBacktest:
                 # 仅保留长度≥2 的组，避免 WQB 400（单个 alpha 的组不被接受）
                 safe_multi: List[Any] = [m for m in multi if isinstance(m, list) and len(m) >= 2]
                 if safe_multi:
-                    logger.info("Multi-sim groups: %d, concurrency=%d", len(safe_multi), self.concurrent_count)
-                    # 进度提示：开跑时显示“已启动/总组数，线程数”
-                    started_groups = min(self.concurrent_count, len(safe_multi))
-                    logger.info("%s.concurrent_simulate(...) [start %d/%d组, %d个线程]:",
-                                self.wqb_session, started_groups, len(safe_multi), self.concurrent_count)
-                    resps_multi = await self.wqb_session.concurrent_simulate(safe_multi, concurrency=self.concurrent_count)  # 并发提交
+                    # 统一、精简的开始日志，并声明进度频率
+                    progress_gap = int(getattr(self.config, "progress_log_gap", 10))
+                    logger.info("开始并发回测: 组数=%d, 线程=%d, 每%d组打印进度",
+                                len(safe_multi), self.concurrent_count, progress_gap)
+                    
                     ok_cnt = 0
                     flat: List[Any] = []
                     extracted_ids_log: List[str] = []
